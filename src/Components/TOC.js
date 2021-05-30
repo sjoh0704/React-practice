@@ -8,13 +8,14 @@ class TOC extends Component{
         var data = this.props.data;
         var list = [];
         for(var i =0; i < data.length; i++){
-            list.push(<li><a href={"/contents/" + data[i].id}>{data[i].title}</a></li>)
+            list.push(<li key={data[i].id}><a href={"/contents/" + data[i].id}>{data[i].title}</a></li>)
+            // 이렇게 자동으로 뿌려줄 때는 key를 필요로 한다. 
         }
         return (     
-           <nav>
-          <ul>
+        <nav>
+            <ul>
               {list}
-          </ul>
+            </ul>
         </nav>)
       
     }
