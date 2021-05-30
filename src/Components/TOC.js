@@ -6,9 +6,11 @@ class TOC extends Component{
         return (     
            <nav>
           <ul>
+              {this.props.title}
               <li><a href="1.html">JavaScript</a></li>
               <li><a href="2.html">JavaScript2</a></li>
               <li><a href="3.html">JavaScript3</a></li>
+            
           </ul>
         </nav>)
       
