@@ -6,6 +6,7 @@ import Contents from './Components/Contents'
 import Subject from './Components/Subject'
 import Hello from './Components/Hello'
 import Wrapper from './Components/Wrapper';
+import Counter from './Components/Counter';
 
 class App extends Component{
   constructor(props){
@@ -35,15 +36,15 @@ class App extends Component{
     return(
 
       <div className="App">
-          <Wrapper>
+
+          <Counter></Counter>
+
+
+          {/* <Wrapper>
 
           <Hello name='ppanda' isSpecial={true} ></Hello>
           <Hello color='red'></Hello>
           </Wrapper>
-
-
-
-
         <Subject title={_title} 
         subtitle={_desc}
         onChangePage = {function(e){  // 이벤트 생성하기 
@@ -54,7 +55,7 @@ class App extends Component{
         ></Subject>
   
         <TOC data={this.state.contents}></TOC>
-        <Contents></Contents>
+        <Contents></Contents> */}
       </div>
     );
   }
