@@ -4,6 +4,8 @@ import React, {Component} from 'react'
 import TOC from './Components/TOC'
 import Contents from './Components/Contents'
 import Subject from './Components/Subject'
+import Hello from './Components/Hello'
+import Wrapper from './Components/Wrapper';
 
 class App extends Component{
   constructor(props){
@@ -31,8 +33,17 @@ class App extends Component{
     }
 
     return(
+
       <div className="App">
-        {/* probs를 사용하면 다음처럼 사용할 수 있다. */}
+          <Wrapper>
+
+          <Hello name='ppanda' isSpecial={true} ></Hello>
+          <Hello color='red'></Hello>
+          </Wrapper>
+
+
+
+
         <Subject title={_title} 
         subtitle={_desc}
         onChangePage = {function(e){  // 이벤트 생성하기 
@@ -41,17 +52,7 @@ class App extends Component{
           });
         }.bind(this)}
         ></Subject>
-        
-        {/* <header>
-              <h1><a href= '/' onClick={function(e){
-                this.setState({
-                    mode:'welcome'
-                });
-                e.preventDefault();  // preventDefault를 안해주면 construct가 실행되어서 다시 mode가 read로 바뀜
-              }.bind(this)}>{_title}</a></h1>
-              {_desc} 
-        </header> */}
-
+  
         <TOC data={this.state.contents}></TOC>
         <Contents></Contents>
       </div>
