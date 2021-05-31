@@ -7,6 +7,7 @@ import Subject from './Components/Subject'
 import Hello from './Components/Hello'
 import Wrapper from './Components/Wrapper';
 import Counter from './Components/Counter';
+import InputSample from './Components/InputSample';
 
 class App extends Component{
   constructor(props){
@@ -37,7 +38,9 @@ class App extends Component{
 
       <div className="App">
 
-          <Counter></Counter>
+
+          <InputSample></InputSample>
+          {/* <Counter></Counter> */}
 
 
           {/* <Wrapper>
