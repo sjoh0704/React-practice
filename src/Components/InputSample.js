@@ -1,4 +1,3 @@
-// 여러개의 인풋 받기 
 import React, {useState} from 'react'
 function InputSample(){
 
