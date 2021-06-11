@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import React, {Component, useRef} from 'react'
+import React, {Component, useRef, useState} from 'react'
 import TOC from './Components/TOC'
 import Contents from './Components/Contents'
 import Subject from './Components/Subject'
@@ -10,32 +10,65 @@ import Counter from './Components/Counter';
 import InputSample from './Components/InputSample';
 import InputSample2 from './Components/InputSample2';
 import UserList from './Components/UserList';
+import CreateUser from './Components/CreateUser';
 
 function App(){
-  const users = [
+  const [inputs, setInputs] = useState({
+    username: '',
+    email:''
+  });
+  const {email, username} = inputs;
+  const [users, setUser] = useState([
           {
-              id:1, username: 'aaa', passwd: '1234'
+              id:1, username: 'aaa', email: '1234'
           },
           {
-              id:2, username: 'bbb', passwd: '1234'
+              id:2, username: 'bbb', email: '1234'
           },
           {
-              id:3, username: 'ccc', passwd: '1234'
+              id:3, username: 'ccc', email: '1234'
           }
-      ];
+      ]);
   
   const nextId = useRef(4);
   const onCreate = () => {
-    console.log(nextId.current);
+    
     nextId.current += 1;
+    const user = {
+      id: nextId.current,
+      username: username,
+      email: email
+    };
+    setUser([...users, user]);
+    console.log(nextId.current);
+    console.log(username);
+    console.log(email);
+    
+  }
+
+  const onChange = (e) => {
+    const {name, value} = e.target;
+    
+    setInputs({
+      ...inputs,
+      [name]:value
+    });
+  }
+
+  const reset = () =>{
+    setInputs({
+      username:'',
+      email:''
+    })
   }
 
   return(
     <div>
+      <CreateUser username={username} email= {email} onCreate={onCreate} onChange={onChange}></CreateUser>
       <UserList users={users}></UserList>
       <button onClick={function(){
-        onCreate();
-      }}></button>
+        reset();
+      }}>초기화</button>
     </div>
     );
 }

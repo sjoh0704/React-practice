@@ -7,7 +7,7 @@ import React from 'react'
 function Display({user}){
     return(
     <div>
-        <b>{user.username}/{user.passwd}</b>
+        <b>{user.username}/{user.email}</b>
     </div>
     );
 }
