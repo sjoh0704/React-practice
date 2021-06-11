@@ -30,7 +30,7 @@ function App(){
           }
       ]);
   
-  const nextId = useRef(4);
+  const nextId = useRef(4);  // 렌더링 필요없이 value를 유지하고 싶을때 이런식으로 사용 
   const onCreate = () => {
     
     nextId.current += 1;
@@ -39,7 +39,7 @@ function App(){
       username: username,
       email: email
     };
-    setUser([...users, user]);
+    setUser([...users, user]);   // 배열에 항목에 추가할때는 이렇게 
     console.log(nextId.current);
     console.log(username);
     console.log(email);
@@ -61,11 +61,14 @@ function App(){
       email:''
     })
   }
+  const onRemove = id =>{
+    setUser(users.filter(user => user.id!=id));  // users배열안에 있는 user라는 항목들에 대해서 
 
+  }
   return(
     <div>
       <CreateUser username={username} email= {email} onCreate={onCreate} onChange={onChange}></CreateUser>
-      <UserList users={users}></UserList>
+      <UserList users={users} onRemove={onRemove}></UserList> 
       <button onClick={function(){
         reset();
       }}>초기화</button>

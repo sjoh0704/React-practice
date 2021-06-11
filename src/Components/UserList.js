@@ -4,10 +4,16 @@ import React from 'react'
 
 // 이렇게 함수를 두개 이상 선언해도 된다. 
 // 마찬가지로 함수를 사용할때는 태그로 사용한다.!!! 
-function Display({user}){
+function Display({user, onRemove}){
+
     return(
     <div>
         <b>{user.username}/{user.email}</b>
+        <button onClick={()=>{
+            onRemove(user.id);
+        }}>
+        삭제</button>
+
     </div>
     );
 }
@@ -16,13 +22,13 @@ function Display({user}){
 // key를 따로 넣어주어야 하며 
 // key가 없을때는 다음처럼 index로 넣어준다. 
 // map안에서 화살표함수를 이용하며 n은 원소 하나를 의미한다. 
-function UserList({users}){
+function UserList({users, onRemove}){
 
     return(
     <div>
         
         {users.map(
-            (n, index)=> <Display user={n} key={index}></Display>
+            (n, index)=> <Display onRemove={onRemove} user={n} key={index}></Display>
             )}
     </div>
     );
