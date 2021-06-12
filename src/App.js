@@ -20,13 +20,13 @@ function App(){
   const {email, username} = inputs;
   const [users, setUser] = useState([
           {
-              id:1, username: 'aaa', email: '1234'
+              id:1, username: 'aaa', email: '1234', active: true,
           },
           {
-              id:2, username: 'bbb', email: '1234'
+              id:2, username: 'bbb', email: '1234', active: false
           },
           {
-              id:3, username: 'ccc', email: '1234'
+              id:3, username: 'ccc', email: '1234', active: true
           }
       ]);
   
@@ -63,12 +63,19 @@ function App(){
   }
   const onRemove = id =>{
     setUser(users.filter(user => user.id!=id));  // users배열안에 있는 user라는 항목들에 대해서 
+  }
 
+  const onToggle = id => {
+    setUser(
+      users.map(user=> user.id === id ? {...user, active: !user.active}: user)
+    )
+    // user를 수정할때도 map을 사용
+    // map을 사용하는 것은 users 안에서 user에 대한 처리를 해줘야 하기 위함
   }
   return(
     <div>
       <CreateUser username={username} email= {email} onCreate={onCreate} onChange={onChange}></CreateUser>
-      <UserList users={users} onRemove={onRemove}></UserList> 
+      <UserList users={users} onRemove={onRemove} onToggle={onToggle}></UserList> 
       <button onClick={function(){
         reset();
       }}>초기화</button>
