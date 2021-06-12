@@ -1,10 +1,23 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 // 배열 렌더링하기 
 
 
 // 이렇게 함수를 두개 이상 선언해도 된다. 
 // 마찬가지로 함수를 사용할때는 태그로 사용한다.!!! 
 function Display({user, onRemove, onToggle}){
+
+    useEffect(() => {
+        //컴포넌트가 바뀐 후 호출된다. 
+        // console.log(user)
+
+        return () => {
+            // 컴포넌트가 바뀌기 전에 호출된다. 
+            // console.log(user)
+        }
+        // dependency로 user를 설정하면 user 컴포넌트가 바뀔 때 호출된다. 
+    }, [user])
+
+
     const {username, email, id, active} = user;
     return(
     <div>
